@@ -1,0 +1,158 @@
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: #cccccc61;
+    border-radius: 3px;
+    border-image: initial;
+}
+
+legend {
+    display: block;
+    width: auto;
+    padding-inline-start: 2px;
+    padding-inline-end: 2px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    font-size: 1.1rem;
+}
+
+.customrow11 .form-check-input {
+    margin-top: -0.14em
+}
+
+.customrow11 .form-check-input:checked {
+    background-color: #45fd0d;
+    border-color: #45fd0d;
+}
+
+.customecheck {
+    border: 1px solid;
+    height: 3vh;
+    width: 1.22rem;
+    border-radius: 2px;
+    margin-top: 6px;
+    border-color: #73b673;
+}
+
+.customrow11 .checkbox-effect:checked+label:after {
+    transform: scale(1);
+    opacity: 1;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.57, 1.9, 0, 1.52);
+    transition-delay: 0.2s;
+
+}
+
+.checkbox-effect:not(:checked)+label:after,
+.checkbox-effect:checked+label:after {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-size: 16px;
+    font-weight: 900;
+    display: flex;
+    height: 65%;
+    align-items: center;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    color: #7bb13c !important;
+    border: 2px solid #7bb13c !important;
+    /* color: red !important; */
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transform-origin: center center;
+    opacity: 0;
+    border-radius: 3px !important;
+}
+
+.customrow11 .checkbox-effect:not(:checked)+label:before,
+.customrow11 .checkbox-effect:checked+label:before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: 2px solid rgb(160, 160, 160) !important;
+    box-sizing: border-box !important;
+    border-radius: 3px !important;
+    transition-property: all !important;
+    transition-duration: 0.2s !important;
+    transition-timing-function: linear !important;
+    transition-delay: 0.2s !important;
+}
+
+.link-cus {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    align-items: center;
+    margin-top: 7px;
+    transition: all .4s linear;
+    cursor: pointer;
+
+}
+
+.link-cus:hover {
+    box-shadow: 1px 1px 2px 1px rgb(214, 214, 214);
+}
+
+.link-cus:hover .fa-facebook-square {
+    color: blue;
+}
+
+.link-cus:hover .fa-whatsapp-square {
+    color: #00d263
+}
+
+.link-cus:hover .fa-instagram {
+    color: #fc855d
+}
+
+.link-cus:hover .fa-envelope {
+    color: #fdbc36
+}
+
+.link-cus:hover .fa-user {
+    color: #eed48d
+}
+
+.link-cus .customerere {
+    align-items: center !important;
+    display: flex !important;
+    /* justify-content: space-around !important; */
+    padding: 1px 10px !important;
+}
+
+.link-cus .customerere i {
+    font-size: 20px;
+    padding: 3px;
+}
+
+.link-cus .customerere p {
+    text-align: center;
+    margin: 10px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.goBack:hover {
+    color: rgb(90, 90, 214);
+    text-decoration: underline
+}
