@@ -151,6 +151,7 @@
                     $('#c-last_post').val(data.last_post);
                     $('#c-job_post').val(data.job_post);
                     $('#c-any_archivement').val(data.any_archivement);
+                    $('#c-office_address').val(data.office_address);
                     if (data.refrence_by === "Social Media" && data.refrence_by ===
                         "Friends/Relatives") {
                         $("#c-refrenceBy").val(data.refrence_by);

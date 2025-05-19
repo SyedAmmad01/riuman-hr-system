@@ -144,8 +144,9 @@
                                 <label for="validationLanguage">Language</label>
                                 {{-- <select class="form-control valid" name="language" id="validationLanguage"
                                     aria-describedby="validationLanguage04Feedback" required> --}}
-                                <select class="js-example-basic-multiple" name="language[]"
-                                    id="validationLanguage" aria-describedby="validationLanguage04Feedback" multiple="multiple" width="1000px;">
+                                <select class="js-example-basic-multiple" name="language[]" id="validationLanguage"
+                                    aria-describedby="validationLanguage04Feedback" multiple="multiple"
+                                    width="1000px;">
                                     <option value="" selected disabled>-Please Select-</option>
                                     <option value="English Beginner">English (Beginner)</option>
                                     <option value="English Intermediate">English (Intermediate)</option>
@@ -160,7 +161,12 @@
                                 {{-- <span class="text-danger">{{ $errors->first('language') }}</span> --}}
                             </div>
 
-
+                            <div class="mb-3">
+                                <label for="Office_address">Office_address</label>
+                                <input type="text" class="form-control" id="validationOffice_address"
+                                    placeholder="office_address" name="office_address" required>
+                                <span class="text-danger invalid-feedback">Office Address is Required</span>
+                            </div>
 
 
                         </div>
@@ -177,9 +183,10 @@
 </div>
 
 
+
+
 @section('page-scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
     <script>
         var isOther = false;
         $(document).ready(function() {
@@ -198,9 +205,7 @@
                     })
             })();
 
-            $(document).ready(function() {
-                $('.js-example-basic-multiple').select2();
-            });
+
 
 
             // $("#addForm").on("submit", function(e) {
@@ -286,6 +291,7 @@
                 const job_post = $("#validationPostJob").val();
                 const refrence_by = $("#validationRefrence_by").val();
                 const language = $("#validationLanguage").val();
+                const office_address = $("#validationOffice_address").val();
 
                 // Validate age > 13 years
                 const isValid = moment(dob).isBefore(moment().subtract(13, "years"));
@@ -315,6 +321,7 @@
                     last_post,
                     job_post,
                     any_archivement,
+                    office_address,
                     refrence_by: refrence_by == "2" ? $("#validationRefrenceByInput").val() :
                         refrence_by,
                     language
@@ -378,6 +385,10 @@
                     $(this).val($(this).val() + '-');
 
             });
-        })
+        });
+
+        $(document).ready(function() {
+                $('.js-example-basic-multiple').select2();
+            });
     </script>
 @endsection

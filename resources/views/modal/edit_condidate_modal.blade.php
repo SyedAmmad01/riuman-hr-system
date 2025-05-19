@@ -1,6 +1,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script src="https://momentjs.com/downloads/moment.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
 <div class="modal fade bd-example-modal-lg" id="employeeShowModalEdit" tabindex="-1" aria-labelledby="myLargeModalLabel"
@@ -159,8 +160,7 @@
                                 {{-- <select class="form-control valid" name="language" id="c-language"
                                     aria-describedby="c-language04Feedback" required> --}}
                                 <select class="js-example-basic-multiple" name="c-language[]" id="validationLanguage"
-                                    aria-describedby="c-language04Feedback" multiple="multiple"
-                                    width="1000px;">
+                                    aria-describedby="c-language04Feedback" multiple="multiple" width="1000px;">
                                     <option value="" selected disabled>-Select-</option>
                                     <option value="English Beginner">English (Beginner)</option>
                                     <option value="English Intermediate">English (Intermediate)</option>
@@ -174,6 +174,14 @@
                                 </select>
                                 {{-- <span class="text-danger">{{ $errors->first('language') }}</span> --}}
                             </div>
+
+                            <div class="mb-3">
+                                <label for="Office_address">Office_address</label>
+                                <input type="text" class="form-control " id="c-office_address"
+                                    placeholder="office_address" name="office_address" required>
+                                <span class="text-danger invalid-feedback">Office Address is Required</span>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -188,6 +196,8 @@
 </div>
 
 {{-- @section('page-scripts') --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 <script>
     $(document).ready(function() {
         (function() {
@@ -224,6 +234,7 @@
             const job_post = $("#c-job_post").val();
             const refrence_by = $("#c-refrenceBy").val();
             const language = $("#c-language").val();
+            const office_address = $("#c-office_address").val();
             const data = {
                 _token: '{{ csrf_token() }}',
                 id,
@@ -231,11 +242,12 @@
                 cnic_number,
                 dob,
                 number,
-                c-other-number,
+                c - other - number,
                 address,
                 last_job: lastJob,
                 time_from_last_job,
                 time_to_last_job,
+                office_address,
                 current_status_job: jobStatus,
                 last_sallery: last_sallery,
                 expected_sallery: expected_sallery,
@@ -288,6 +300,10 @@
                 $(this).val($(this).val() + '-');
 
         });
+    });
+
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
     });
 </script>
 {{-- @endsection --}}
