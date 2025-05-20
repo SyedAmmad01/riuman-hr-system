@@ -67,10 +67,10 @@
                                         @foreach ($candidates as $candidate)
                                             <tr>
                                                 <td>{{ $candidate->id }}</td>
-                                                <td>{{ $candidate->name }}</td>
-                                                <td>{{ $candidate->dob }}</td>
-                                                <td>{{ $candidate->cnic_number }}</td>
-                                                <td>{{ $candidate->number }}</td>
+                                                <td>{{ $candidate->first_name }}</td>
+                                                <td>{{ $candidate->date_of_birth }}</td>
+                                                <td>{{ $candidate->cnic }}</td>
+                                                <td>{{ $candidate->mobile }}</td>
                                                 <td>
                                                     <a href="javascript:void(0);" id="show-data"
                                                         data-url="{{ route('admin.candidate.show', ['id' => $candidate->id]) }}"

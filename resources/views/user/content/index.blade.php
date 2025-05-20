@@ -59,20 +59,20 @@
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label for="Candidate Name">Candidate Name</label>
-                                                    <input type="text" class="form-control" value="{{ $contents->first_name }}"
-                                                        readonly>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->first_name }}" readonly>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="Candidate Cnic">Candidate Cnic</label>
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $contents->cnic }}" readonly>
+                                                    <input type="text" class="form-control" value="{{ $contents->cnic }}"
+                                                        readonly>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="validationDOB">Condidate Date Of Birth</label>
-                                                    <input type="text" class="form-control" value="{{ $contents->date_of_birth }}"
-                                                        readonly>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->date_of_birth }}" readonly>
 
                                                 </div>
 
@@ -81,6 +81,12 @@
                                                     <input type="text" class="form-control"
                                                         value="{{ $contents->mobile }}" readonly>
 
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="validationNumber">Candidate Other Number</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->other_number }}" readonly>
                                                 </div>
 
                                                 <div class="mb-3">
@@ -109,12 +115,12 @@
                                                         value="{{ $contents->time_from_last_job }}" readonly>
 
                                                 </div>
-                                                <div class="mb-3">
+
+                                                {{-- <div class="mb-3">
                                                     <label for="Time To Last Job">Time To Last Job</label>
                                                     <input type="text" class="form-control"
                                                         value="{{ $contents->time_to_last_job }}" readonly>
-
-                                                </div>
+                                                </div> --}}
 
 
                                                 <div class="mb-3">
@@ -168,6 +174,13 @@
                                                     <input type="text" class="form-control"
                                                         value="{{ $contents->language }}" readonly>
                                                 </div>
+
+                                                <div class="mb-3">
+                                                    <label for="">Office Address</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->office_address }}" readonly>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>

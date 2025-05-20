@@ -90,9 +90,9 @@
                                                     @foreach ($monthlys as $monthly)
                                                         <tr>
                                                             <td>{{ $monthly->id }}</td>
-                                                            <td>{{ $monthly->name }}</td>
-                                                            <td>{{ $monthly->cnic_number }}</td>
-                                                            <td>{{ $monthly->dob }}</td>
+                                                            <td>{{ $monthly->first_name }}</td>
+                                                            <td>{{ $monthly->cnic }}</td>
+                                                            <td>{{ $monthly->date_of_birth }}</td>
                                                             <td>{{ $monthly->job_post }}</td>
                                                             <td>{{ $monthly->expected_sallery }}</td>
                                                             <td>
@@ -139,7 +139,7 @@
                                                     @foreach ($monthlys_approved as $approved)
                                                         <tr>
                                                             <td>{{ $approved->candidate_id }}</td>
-                                                            <td>{{ $approved->name }}</td>
+                                                            <td>{{ $approved->first_name }}</td>
                                                             <td>
                                                                 @if ($approved->status == 1)
                                                                     <a class="btn btn-sm text-light"
@@ -189,7 +189,7 @@
                                                     @foreach ($monthlys_rejected as $rejected)
                                                         <tr>
                                                             <td>{{ $rejected->candidate_id }}</td>
-                                                            <td>{{ $rejected->name }}</td>
+                                                            <td>{{ $rejected->first_name }}</td>
                                                             <td>
                                                                 @if ($rejected->status == 0)
                                                                     <a class="btn btn-danger text-light">Rejected</a>

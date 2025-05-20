@@ -90,9 +90,9 @@
                                                     @foreach ($dailys as $daily)
                                                         <tr>
                                                             <td>{{ $daily->id }}</td>
-                                                            <td>{{ $daily->name }}</td>
-                                                            <td>{{ $daily->cnic_number }}</td>
-                                                            <td>{{ $daily->dob }}</td>
+                                                            <td>{{ $daily->first_name }}</td>
+                                                            <td>{{ $daily->cnic }}</td>
+                                                            <td>{{ $daily->date_of_birth }}</td>
                                                             <td>{{ $daily->job_post }}</td>
                                                             <td>{{ $daily->expected_sallery }}</td>
                                                             <td>
@@ -139,7 +139,7 @@
                                                     @foreach ($dailys_approved as $approved)
                                                         <tr>
                                                             <td>{{ $approved->candidate_id }}</td>
-                                                            <td>{{ $approved->name }}</td>
+                                                            <td>{{ $approved->first_name }}</td>
                                                             <td>
                                                                 @if ($approved->status == 1)
                                                                     <a class="btn btn-sm text-light"
@@ -189,7 +189,7 @@
                                                     @foreach ($dailys_rejected as $rejected)
                                                         <tr>
                                                             <td>{{ $rejected->candidate_id }}</td>
-                                                            <td>{{ $rejected->name }}</td>
+                                                            <td>{{ $rejected->first_name }}</td>
                                                             <td>
                                                                 @if ($rejected->status == 0)
                                                                     <a class="btn btn-danger text-light">Rejected</a>
