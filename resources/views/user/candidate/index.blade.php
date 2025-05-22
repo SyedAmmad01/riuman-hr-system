@@ -4,6 +4,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+
     @extends('layouts.front')
     @section('page_title', 'All Candidates')
     @section('content')
@@ -152,6 +153,8 @@
                     $('#c-job_post').val(data.job_post);
                     $('#c-any_archivement').val(data.any_archivement);
                     $('#c-office_address').val(data.office_address);
+                    $('#c-status_at_riuman').val(data.status_at_riuman);
+                    $('#c-reason').val(data.reason);
                     if (data.refrence_by === "Social Media" && data.refrence_by ===
                         "Friends/Relatives") {
                         $("#c-refrenceBy").val(data.refrence_by);
@@ -184,7 +187,5 @@
                 $('#employeeShowModalDelete').modal('hide');
             });
         });
-
-
     </script>
     {{-- @endsection --}}

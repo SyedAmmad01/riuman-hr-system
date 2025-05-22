@@ -146,8 +146,7 @@
                                                         value="{{ $contents->expected_sallery }}" readonly>
 
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
+
                                                 <div class="mb-3 ">
                                                     <label for="Any Archivement">Any Archivement</label>
                                                     <input type="text" class="form-control"
@@ -161,6 +160,10 @@
                                                         value="{{ $contents->job_post }}" readonly>
 
                                                 </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+
 
                                                 <div class="mb-3">
                                                     <label for="">Refrence By</label>
@@ -180,6 +183,19 @@
                                                     <input type="text" class="form-control"
                                                         value="{{ $contents->office_address }}" readonly>
                                                 </div>
+
+                                                <div class="mb-3">
+                                                    <label for="">Status At Riuman</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->status_at_riuman }}" readonly>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="">Reason</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->reason }}" readonly>
+                                                </div>
+
 
                                             </div>
                                         </div>

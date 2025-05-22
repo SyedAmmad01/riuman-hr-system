@@ -106,8 +106,7 @@
                                     placeholder="Expected Sallery" name="expected_sallery" required>
                                 <span class="text-danger invalid-feedback">Expected Sallery is Required</span>
                             </div>
-                        </div>
-                        <div class="col-md-4">
+
                             <div class="mb-3 ">
                                 <label for="Any Archivement">Any Archivement</label>
                                 <input type="text" class="form-control " id="any_archivement"
@@ -120,6 +119,10 @@
                                     placeholder="Job Post" name="job_post" required>
                                 <span class="text-danger invalid-feedback">Job Post is Required</span>
                             </div>
+
+                        </div>
+                        <div class="col-md-4">
+
                             <div class="mb-3" id="refrenceByInput" style="display: none">
                                 <label for="validationRefrenceByInput">Refrence By</label>
                                 <i class="fa fa-trash-o" style="cursor: pointer" id="inputDelete"></i>
@@ -144,7 +147,7 @@
                                 <label for="validationLanguage">Language</label>
                                 {{-- <select class="form-control valid" name="language" id="validationLanguage"
                                     aria-describedby="validationLanguage04Feedback" required> --}}
-                                <select class="js-example-basic-multiple" name="language[]" id="validationLanguage"
+                                <select class="js-select2-add" name="language[]" id="validationLanguage"
                                     aria-describedby="validationLanguage04Feedback" multiple="multiple"
                                     width="1000px;">
                                     <option value="" selected disabled>-Please Select-</option>
@@ -162,10 +165,42 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="Office_address">Office_address</label>
-                                <input type="text" class="form-control" id="validationOffice_address"
-                                    placeholder="office_address" name="office_address" required>
-                                <span class="text-danger invalid-feedback">Office Address is Required</span>
+                                <label for="Office_address">Office Address</label>
+                                <select class="form-control" name="office_address" id="validationOffice_address"
+                                    aria-describedby="validationOfficeaddress04Feedback">
+                                    <option value="" selected disabled>-Please Select-</option>
+                                    <option value="Fortune Center">Fortune Center</option>
+                                    <option value="Anum Estate">Anum Estate</option>
+                                    <option value="Anum Empire">Anum Empire</option>
+                                    <option value="Dulara Business Center">Dulara Business Center</option>
+                                    <option value="Syeda Chamber Gulshan">Syeda Chamber Gulshan</option>
+                                    <option value="Autobhan Hyderabad">Autobhan Hyderabad</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="Status_at_Riuman">Status at Riuman</label>
+                                <select class="form-control" name="status_at_riuman" id="validationstatusatriuman"
+                                    aria-describedby="validationstatusatriuman04Feedback">
+                                    <option value="" selected disabled>-Please Select-</option>
+                                    <option value="Terminate">Terminate</option>
+                                    <option value="Resign">Resign</option>
+                                    <option value="Working">Working</option>
+                                    <option value="Not Available">Not Available</option>
+                                </select>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="Reason">Reason</label>
+                                <select class="form-control" name="reason" id="validationreason"
+                                    aria-describedby="validationreason04Feedback">
+                                    <option value="" selected disabled>-Please Select-</option>
+                                    <option value="Low performance">Low performance</option>
+                                    <option value="Non-Serious">Non-Serious</option>
+                                    <option value="Personal Issues">Personal Issues</option>
+                                    <option value="Ghost.(left uninformed)">Ghost.(left uninformed)</option>
+                                </select>
                             </div>
 
 
@@ -292,6 +327,8 @@
                 const refrence_by = $("#validationRefrence_by").val();
                 const language = $("#validationLanguage").val();
                 const office_address = $("#validationOffice_address").val();
+                const status_at_riuman = $("#validationstatusatriuman").val();
+                const reason = $("#validationreason").val();
 
                 // Validate age > 13 years
                 const isValid = moment(dob).isBefore(moment().subtract(13, "years"));
@@ -322,6 +359,8 @@
                     job_post,
                     any_archivement,
                     office_address,
+                    status_at_riuman,
+                    reason,
                     refrence_by: refrence_by == "2" ? $("#validationRefrenceByInput").val() :
                         refrence_by,
                     language
@@ -388,7 +427,11 @@
         });
 
         $(document).ready(function() {
-            $('.js-example-basic-multiple').select2();
+            $('#employeeShowModal').on('shown.bs.modal', function() {
+                $('.js-select2-add').select2({
+                    dropdownParent: $('#employeeShowModal')
+                });
+            });
         });
     </script>
 @endsection

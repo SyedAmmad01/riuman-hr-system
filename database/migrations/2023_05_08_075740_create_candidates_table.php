@@ -56,6 +56,8 @@
                 $table->string('refrence_by')->nullable();
                 $table->string('language')->nullable();
                 $table->string('office_address')->nullable();
+                $table->string('status_at_riuman')->nullable();
+                $table->string('reason')->nullable();
                 $table->softDeletes();
                 $table->timestamps();
             });

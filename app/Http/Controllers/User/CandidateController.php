@@ -113,6 +113,8 @@ class CandidateController extends Controller
         $candidate->any_archivement = $request->any_archivement;
         $candidate->refrence_by = $request->refrence_by;
         $candidate->office_address = $request->office_address;
+        $candidate->status_at_riuman = $request->status_at_riuman;
+        $candidate->reason = $request->reason;
 
 
         // Process language array
@@ -163,6 +165,7 @@ class CandidateController extends Controller
 
     public function update(Request $request)
     {
+        // dd($request->all());
         $candidates = Candidate::find($request->id);
         $candidates->address = $request->address;
         $candidates->cnic = $request->cnic_number;
@@ -184,6 +187,8 @@ class CandidateController extends Controller
         $candidates->refrence_by = $request->refrence_by;
         $candidates->language = $request->language;
         $candidates->office_address = $request->office_address;
+        $candidates->status_at_riuman = $request->status_at_riuman;
+        $candidates->reason = $request->reason;
 
         $candidates->update();
         if ($request->ajax()) {
