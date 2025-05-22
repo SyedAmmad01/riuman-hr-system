@@ -159,7 +159,7 @@
                                 <label for="c-language">Language</label>
                                 {{-- <select class="form-control valid" name="language" id="c-language"
                                     aria-describedby="c-language04Feedback" required> --}}
-                                <select class="js-example-basic-multiple" name="c-language[]" id="validationLanguage"
+                                <select class="js-example" name="c-language[]" id="validationLanguage"
                                     aria-describedby="c-language04Feedback" multiple="multiple" width="1000px;">
                                     <option value="" selected disabled>-Select-</option>
                                     <option value="English Beginner">English (Beginner)</option>
@@ -303,7 +303,7 @@
     });
 
     $(document).ready(function() {
-        $('.js-example-basic-multiple').select2();
+        $('.js-example').select2();
     });
 </script>
 {{-- @endsection --}}
