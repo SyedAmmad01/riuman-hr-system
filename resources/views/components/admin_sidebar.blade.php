@@ -23,7 +23,7 @@
 <div id="left-sidebar" class="sidebar">
     <div class="navbar-brand">
         <a href="{{route('admin.dashboard')}}"><img src="{{ asset('admin_assets') }}/assets/images/download.png" alt="Ruiman Logo"
-            class="img-fluid logo"><span style="font-size: 10px;">Ruiman International HR System Admin</span></a>
+            class="img-fluid logo"><span style="font-size: 10px;">Ruiman Solutions Admin</span></a>
     <button type="button" class="btn-toggle-offcanvas btn btn-sm btn-default float-right"><i
             class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
     </div>

@@ -9,7 +9,7 @@
         <div class="row clearfix">
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="javascript:void(0);"><img src="{{ asset('admin_assets') }}/assets/images/download.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">Riuman International Hr System Admin</a>
+                    <a class="navbar-brand" href="javascript:void(0);"><img src="{{ asset('admin_assets') }}/assets/images/download.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="">Riuman Solutions Admin</a>
                     <ul class="navbar-nav">
                     </ul>
                 </nav>

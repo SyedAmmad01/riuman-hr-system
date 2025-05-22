@@ -5,7 +5,7 @@
 <!-- Title Page-->
 <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin_assets') }}/assets/images/download.png">
 <link rel="icon" type="image/png" href="{{ asset('admin_assets') }}/assets/images/download.png">
-<title> Riuman Internation HR System | @yield('page_title')</title>
+<title> Riuman Solutions | @yield('page_title')</title>
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 <meta charset="utf-8">

@@ -25,7 +25,7 @@
             <img src="{{ asset('front_assets') }}/assets/images/download.png"
             style="background: white;width: 40%;border-radius: 10px"
             alt="Ruiman Logo" class="img-fluid logo">
-            <p style="font-size:1rem;padding: 10px;text-align: center">Ruiman International<br/> HR System</p>
+            <p style="font-size:1rem;padding: 10px;text-align: center">Ruiman Solutions<br/></p>
         </a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm btn-default float-right"><i
                 class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
