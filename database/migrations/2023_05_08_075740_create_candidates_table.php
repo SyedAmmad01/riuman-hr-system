@@ -58,6 +58,7 @@
                 $table->string('office_address')->nullable();
                 $table->string('status_at_riuman')->nullable();
                 $table->string('reason')->nullable();
+                $table->string('date_of_joining')->nullable();
                 $table->softDeletes();
                 $table->timestamps();
             });
