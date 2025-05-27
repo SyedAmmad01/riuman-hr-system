@@ -197,6 +197,13 @@
                                                 </div>
 
 
+                                                <div class="mb-3">
+                                                    <label for="">Date Of Joining</label>
+                                                    <input type="text" class="form-control"
+                                                        value="{{ $contents->date_of_joining }}" readonly>
+                                                </div>
+
+
                                             </div>
                                         </div>
                                     </div>

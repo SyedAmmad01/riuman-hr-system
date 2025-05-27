@@ -115,6 +115,7 @@ class CandidateController extends Controller
         $candidate->office_address = $request->office_address;
         $candidate->status_at_riuman = $request->status_at_riuman;
         $candidate->reason = $request->reason;
+        $candidate->date_of_joining = $request->date_of_joining;
 
 
         // Process language array
@@ -189,6 +190,7 @@ class CandidateController extends Controller
         $candidates->office_address = $request->office_address;
         $candidates->status_at_riuman = $request->status_at_riuman;
         $candidates->reason = $request->reason;
+        $candidates->date_of_joining = $request->date_of_joining;
 
         $candidates->update();
         if ($request->ajax()) {

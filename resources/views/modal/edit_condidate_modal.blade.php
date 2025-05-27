@@ -10,7 +10,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="font-weight: bold;">Edit Candidate</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="font-weight:bold;">Edit Candidate</h5>
                     <button type="button" class="close close_modal" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -21,6 +21,7 @@
                             <div class="col-md-4">
                                 <input type="hidden" name="candidate_id" value="1">
                                 <input type="hidden" name="id" id="c-id">
+
 
                                 {{-- @php
                                     $candidate = DB::table('candidates')->where('id', $candidate->id)->first();
@@ -110,18 +111,18 @@
 
 
                                 <div class="mb-3">
-                                    <label for="Last Sallery">Last Sallery</label>
+                                    <label for="Last Salary">Last Salary</label>
                                     <input type="number" class="form-control" id="c-last_sallery"
-                                        value="{{ old('last_sallery') }}" placeholder="Last Sallery"
+                                        value="{{ old('last_sallery') }}" placeholder="Last Salary"
                                         name="last_sallery">
                                 </div>
 
 
 
                                 <div class="mb-3">
-                                    <label for="Expected Sallery">Expected Sallery</label>
+                                    <label for="Expected Salary">Expected Salary</label>
                                     <input type="number" class="form-control" id="c-expected_sallery"
-                                        value="{{ old('expected_sallery') }}" placeholder="Expected Sallery"
+                                        value="{{ old('expected_sallery') }}" placeholder="Expected Salary"
                                         name="expected_sallery">
                                 </div>
 
@@ -178,8 +179,7 @@
 
                                 <div class="mb-3">
                                     <label for="Office_address">Office Address</label>
-                                    <select class="form-control" name="c-office_address"
-                                        id="c-office_address"
+                                    <select class="form-control" name="c-office_address" id="c-office_address"
                                         aria-describedby="validationOfficeaddress04Feedback">
                                         <option value="" selected disabled>-Please Select-</option>
                                         <option value="Fortune Center"
@@ -211,8 +211,7 @@
 
                                 <div class="mb-3">
                                     <label for="Status_at_Riuman">Status at Riuman</label>
-                                    <select class="form-control" name="c-status_at_riuman"
-                                        id="c-status_at_riuman"
+                                    <select class="form-control" name="c-status_at_riuman" id="c-status_at_riuman"
                                         aria-describedby="validationstatusatriuman04Feedback">
                                         <option value="" selected disabled>-Please Select-</option>
                                         <option value="Terminate"
@@ -251,6 +250,11 @@
                                     </select>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label for="date_of_joining">Date Of Joining</label>
+                                    <input type="date" class="form-control" id="c-date_of_joining"
+                                        placeholder="date_of_joining" name="date_of_joining" value="{{ old('date_of_joining') }}" placeholder="Date Of Joining">
+                                </div>
 
 
                             </div>
@@ -309,6 +313,7 @@
                 const office_address = $("#c-office_address").val();
                 const status_at_riuman = $("#c-status_at_riuman").val();
                 const reason = $("#c-reason").val();
+                const date_of_joining = $("#c-date_of_joining").val();
                 const data = {
                     _token: '{{ csrf_token() }}',
                     id,
@@ -332,7 +337,8 @@
                     reason: reason,
                     refrence_by: refrence_by == "2" ? $("#validationRefrenceByInput").val() :
                         refrence_by,
-                    language
+                    language,
+                    date_of_joining: date_of_joining,
                 };
                 var isValid = moment(dob).isBefore(moment().subtract(13, "years"));
                 if (!isValid) {
@@ -378,12 +384,19 @@
             });
         });
 
+        // $(document).ready(function() {
+        //     $('#employeeShowModalEdit').on('shown.bs.modal', function() {
+        //         $('.js-select2-edit').select2({
+        //             dropdownParent: $('#employeeShowModalEdit')
+        //         });
+        //     });
+        // });
+
         $(document).ready(function() {
-            $('#employeeShowModalEdit').on('shown.bs.modal', function() {
-                $('.js-select2-edit').select2({
-                    dropdownParent: $('#employeeShowModalEdit')
-                });
-            });
+            $('.js-select2-edit').select2();
+            const languagesString = $('#language-data').val();
+            const selectedLanguages = languagesString.split(',').map(lang => lang.trim());
+            $('#c-language').val(selectedLanguages).trigger('change');
         });
     </script>
     {{-- @endsection --}}
