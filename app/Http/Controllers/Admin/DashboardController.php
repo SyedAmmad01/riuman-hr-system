@@ -10,18 +10,93 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    public function dashboard(){
+    public function dashboard()
+    {
         $data_array = array(
             'title'   => 'DashBoard',
         );
         $users = User::count();
         $candidates = Candidate::count();
-        return view('admin.dashboard' , compact('users' , 'candidates'));
+        return view('admin.dashboard', compact('users', 'candidates'));
     }
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $users = User::all();
-        return view('admin.user.index',['users' => $users]);
+        return view('admin.user.index', ['users' => $users]);
+    }
+
+    public function add(Request $request)
+    {
+        return view('admin.user.add');
+    }
+
+    public function edit($id)
+    {
+        $users = User::where('id', $id)->first();
+        return view('admin.user.edit', ['users' => $users]);
+    }
+
+    public function save(Request $request)
+    {
+        // Basic validation (without unique rule)
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        // Check if name already exists
+        $nameExists = User::where('name', $request->name)->exists();
+
+        // Check if email already exists
+        $emailExists = User::where('email', $request->email)->exists();
+
+        $errors = [];
+
+        if ($nameExists) {
+            $errors['name'] = 'This name is already registered.';
+        }
+
+        if ($emailExists) {
+            $errors['email'] = 'This email is already registered.';
+        }
+
+        // If either exists, return with errors
+        if (!empty($errors)) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($errors);
+        }
+
+        // Save user if no duplicates
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->plain_password = $request->password;
+        $user->status = $request->status;
+        $user->city = $request->city;
+        $user->office_address = $request->office_address;
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User Added Successfully');
+    }
+
+    public function update(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->plain_password = $request->password;
+        $user->status = $request->status;
+        $user->city = $request->city;
+        $user->office_address = $request->office_address;
+        $user->role = $request->role;
+        $user->update();
+        return redirect()->back()->with('success', 'Users Updated Successfully');
     }
 
 

@@ -58,6 +58,11 @@ Route::group(['prefix' => 'admin'], function() {
 		Route::get('/dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('admin.dashboard');
         // Users Routes On Admin
         Route::get('/user/index',[App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.user.index');
+        Route::get('/user/add',[App\Http\Controllers\Admin\DashboardController::class, 'add'])->name('admin.user.add');
+        Route::post('/user/save',[App\Http\Controllers\Admin\DashboardController::class, 'save'])->name('admin.user.save');
+        Route::get('/user/edit/{id}',[App\Http\Controllers\Admin\DashboardController::class, 'edit'])->name('admin.user.edit');
+        // Route::put('/user/update/{id}', [App\Http\Controllers\Admin\DashboardController::class, 'update'])->name('admin.user.update');
+        Route::post('/user/update', [App\Http\Controllers\Admin\DashboardController::class, 'update'])->name('admin.user.update');
         Route::get('/user/show/{id}',[App\Http\Controllers\Admin\DashboardController::class, 'show'])->name('admin.user.show');
         Route::get('/user/delete/',[App\Http\Controllers\Admin\DashboardController::class, 'delete'])->name('admin.user.delete');
         Route::get('/user/status-update/{id}',[App\Http\Controllers\Admin\DashboardController::class, 'status_update'])->name('admin.user.status-update');
