@@ -80,8 +80,8 @@
                                                         <td>{{ $candidate->cnic }}</td>
                                                         <td>{{ $candidate->mobile }}</td>
                                                         <td>
-                                                            <a href="javascript:void(0);" id="show-employee" data-toggle="modal"
-                                                                data-target="#employeeShowModalEdit"
+                                                            <a href="javascript:void(0);" id="show-employee"
+                                                                data-toggle="modal" data-target="#employeeShowModalEdit"
                                                                 data-url="{{ route('user.candidate.edit', ['id' => $candidate->id]) }}"
                                                                 class="btn btn-info" title="Edit" type="button"><i
                                                                     class="fa fa-edit"></i>
@@ -165,8 +165,18 @@
                             )
                         }
                         $('#c-refrence_by').val(data.refrence_by);
-                        $('#c-language').val(data.language);
+                        // $('#c-language').val(data.language);
                         $('#c-language_level').val(data.language_level);
+
+
+                        let selectedLanguages = [];
+                        if (typeof data.language === 'string') {
+                            selectedLanguages = data.language.split(',').map(item => item.trim());
+                        } else {
+                            selectedLanguages = data.language;
+                        }
+                        $('#c-language').val(selectedLanguages).trigger('change');
+
                     });
                 });
                 $('.close_modal').click(function() {

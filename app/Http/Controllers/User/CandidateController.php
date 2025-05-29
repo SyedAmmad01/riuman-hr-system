@@ -186,11 +186,19 @@ class CandidateController extends Controller
         $candidates->job_post = $request->job_post;
         $candidates->any_archivement = $request->any_archivement;
         $candidates->refrence_by = $request->refrence_by;
-        $candidates->language = $request->language;
+        // $candidates->language = $request->language;
         $candidates->office_address = $request->office_address;
         $candidates->status_at_riuman = $request->status_at_riuman;
         $candidates->reason = $request->reason;
         $candidates->date_of_joining = $request->date_of_joining;
+
+
+        // Process language array
+        $languageStrings = [];
+        foreach ($request->language as $lang) {
+            $languageStrings[] = $lang; // Each $lang is already like "English Beginner"
+        }
+        $candidates->language = implode(', ', $languageStrings); // Save as a single string
 
         $candidates->update();
         if ($request->ajax()) {
