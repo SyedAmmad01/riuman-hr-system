@@ -69,6 +69,10 @@ Route::group(['prefix' => 'admin'], function() {
         //
         // Candidate Routes On Admin
         Route::get('/candidate/index',[App\Http\Controllers\Admin\CandidateController::class, 'index'])->name('admin.candidate.index');
+        Route::get('/candidate/add',[App\Http\Controllers\Admin\CandidateController::class, 'add'])->name('admin.candidate.add');
+        Route::get('/candidate/edit/{id}',[App\Http\Controllers\Admin\CandidateController::class, 'edit'])->name('admin.candidate.edit');
+        Route::post('/candidate/update',[App\Http\Controllers\Admin\CandidateController::class, 'update'])->name('admin.candidate.update');
+        Route::post('/candidate/save',[App\Http\Controllers\Admin\CandidateController::class, 'save'])->name('admin.candidate.save');
         Route::get('/candidate/show/{id}',[App\Http\Controllers\Admin\CandidateController::class, 'show'])->name('admin.candidate.show');
         Route::get('/candidate/delete/',[App\Http\Controllers\Admin\CandidateController::class, 'delete'])->name('admin.candidate.delete');
         //

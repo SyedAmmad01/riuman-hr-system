@@ -19,7 +19,7 @@
                         <li class="breadcrumb-item">Dashboard</li>
                         <li class="breadcrumb-item active"></li>
                     </ul>
-                    {{-- <a href="{{ route('admin.dashboard') }}" class="btn btn-sm btn btn-primary">Dashboard</a> --}}
+                    <a href="{{ route('admin.candidate.add') }}" class="btn btn-sm btn btn-primary">Add Candidate</a>
                 </div>
             </div>
         </div>
@@ -76,6 +76,10 @@
                                                         data-url="{{ route('admin.candidate.show', ['id' => $candidate->id]) }}"
                                                         class="btn btn-danger" title="Delete" type="button"><i
                                                             class="fa fa-trash-o"></i></a>
+
+                                                    <a href="{{ route('admin.candidate.edit', ['id' => $candidate->id]) }}"
+                                                        class="btn btn-success" title="View" type="button"><i
+                                                            class="fa fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -88,42 +92,42 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- Delete Modal -->
-<div class="modal fade" id="employeeShowModalDelete" tabindex="-1" role="dialog"
-aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Delete Candidates</h5>
-            <button type="button" class="close modal_delete" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form action="{{ route('admin.candidate.delete') }}" method="get">
-                {{ csrf_field() }}
-                <div class="modal-body">
-                    <div class="row">
-                        <span style="color:red; font-weight:1000;">Are You Sure You Want To Delete This Data
-                            ?</span>
-                        <input type="hidden" id="d-id" name="id">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary modal_delete"
-                        data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </div>
-        </div>
-        </form>
     </div>
 
-</div>
-</div>
-</div>
-<!-- Delete Modal -->
+    <!-- Delete Modal -->
+    <div class="modal fade" id="employeeShowModalDelete" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Delete Candidates</h5>
+                    <button type="button" class="close modal_delete" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.candidate.delete') }}" method="get">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="row">
+                                <span style="color:red; font-weight:1000;">Are You Sure You Want To Delete This Data
+                                    ?</span>
+                                <input type="hidden" id="d-id" name="id">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary modal_delete"
+                                data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <!-- Delete Modal -->
 @endsection
 @section('page-scripts')
     <script type="text/javascript">
