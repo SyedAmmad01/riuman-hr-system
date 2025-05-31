@@ -1,3 +1,6 @@
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
 @extends('layouts.admin')
 @section('page_title', 'Admin List Users')
 @section('content')
@@ -9,7 +12,8 @@
                 </div>
                 <div class="col-md-6 col-sm-12 text-right">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="icon-home"></i></a>
+                        </li>
                         <li class="breadcrumb-item">Dashboard</li>
                         <li class="breadcrumb-item active"></li>
                     </ul>
@@ -54,8 +58,7 @@
                                 <p class="float-end">
                                 </p>
                                 <h4 class="card-title">Edit Users</h4>
-                                    <form action="{{ route('admin.user.update', ['id' => $users->id]) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
+                                <form class="needs-validation" id="editForm" novalidate>
 
                                     <input type="hidden" name="id" value="{{ $users->id }}">
 
@@ -193,4 +196,64 @@
             </div>
         </div>
     </div>
+@endsection
+@section('page-scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            (function() {
+                'use strict'
+                var forms = document.querySelectorAll('.needs-validation')
+                Array.prototype.slice.call(forms)
+                    .forEach(function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                            }
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            })();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $("#editForm").on("submit", function(e) {
+                e.preventDefault();
+
+                const formData = {
+                    id: $('input[name="id"]').val(),
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    password: $('#password').val(),
+                    status: $('#status').val(),
+                    city: $('#city').val(),
+                    office_address: $('#office_address').val(),
+                    role: $('#role').val(),
+                };
+
+                $.ajax({
+                    url: '{{ route('admin.user.update') }}', // Adjust route if needed
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        alert('User updated successfully!');
+                        // location.reload(); // Or redirect if needed
+                         window.location.href = "{{ route('admin.user.index') }}";
+
+                    },
+                    error: function(xhr) {
+                        alert('Error updating user.');
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection

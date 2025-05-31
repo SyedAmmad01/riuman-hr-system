@@ -450,7 +450,9 @@
                     data: data,
                     success: function(data) {
                         if (data) {
-                            location.reload(true);
+                            alert("Candidate updated successfully.");
+                            // location.reload(true);
+                            window.location.href = "/admin/candidate/index";
                         }
                     },
                     error: function(data, textStatus, errorThrown) {

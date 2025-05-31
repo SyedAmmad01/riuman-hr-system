@@ -1,3 +1,6 @@
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
     @extends('layouts.admin')
     @section('page_title', 'Admin List Users')
     @section('content')
@@ -9,7 +12,8 @@
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="icon-home"></i></a>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i
+                                        class="icon-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">Dashboard</li>
                             <li class="breadcrumb-item active"></li>
@@ -55,9 +59,7 @@
                                     <p class="float-end">
                                     </p>
                                     <h4 class="card-title">Add User</h4>
-                                    <form class="forms-sample" action="{{ route('admin.user.save') }}"method="post"
-                                        enctype="multipart/form-data">
-                                        @csrf
+                                    <form class="needs-validation" id="addForm" novalidate>
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -186,4 +188,75 @@
                 </div>
             </div>
         </div>
+    @endsection
+
+    @section('page-scripts')
+        <script>
+            var isOther = false;
+            $(document).ready(function() {
+                (function() {
+                    'use strict'
+                    var forms = document.querySelectorAll('.needs-validation')
+                    Array.prototype.slice.call(forms)
+                        .forEach(function(form) {
+                            form.addEventListener('submit', function(event) {
+                                if (!form.checkValidity()) {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                }
+                                form.classList.add('was-validated')
+                            }, false)
+                        })
+                })();
+
+
+
+                $("#addForm").on("submit", function(e) {
+                    e.preventDefault();
+                    // Collect values
+                    const name = $("#name").val();
+                    const email = $("#email").val();
+                    const password = $("#password").val();
+                    const status = $("#status").val();
+                    const city = $("#city").val();
+                    const office_address = $("#office_address").val();
+                    const role = $("#role").val();
+
+                    // Get CSRF token from meta tag
+                    const token = $('meta[name="csrf-token"]').attr("content");
+
+                    // Prepare data
+                    const data = {
+                        _token: token,
+                        name,
+                        email,
+                        password,
+                        status,
+                        city,
+                        office_address,
+                        role,
+                    };
+
+                    // AJAX request
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('admin.user.save') }}",
+                        data: data,
+                        success: function(response) {
+                            if (response) {
+                                alert("User saved successfully.");
+                                // location.reload(true);
+                                window.location.href = "admin/user/index";
+
+                            }
+                        },
+                        error: function(xhr, textStatus, errorThrown) {
+                            console.error("Error occurred:", xhr.responseText);
+                            alert("An error occurred while submitting the form.");
+                        },
+                    });
+                });
+
+            });
+        </script>
     @endsection

@@ -447,7 +447,9 @@
                         success: function(response) {
                             if (response) {
                                 alert("Candidate saved successfully.");
-                                location.reload(true);
+                                // location.reload(true);
+                               window.location.href = "/admin/candidate/index";
+
                             }
                         },
                         error: function(xhr, textStatus, errorThrown) {
